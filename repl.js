@@ -13,21 +13,30 @@ mongoose.Promise = global.Promise;
 
 /////////////////////////////////////////////
 // モデルで定義したインスタンスメソッドを試す
-
-// User.findOne({ email: "mari@email.com" })
+// findOne
+// User.findOne({ email: "nob@j-email.com" })
 //   .then(result => {
 //     console.log(result.getInfo());
 //   });
 
 // //////////////////////////////////////// ERRORが解決できない！
-// User.findUser();
+// findUsers
+// User.findUsers();
 // => Uncaught TypeError: User.findUser is not a function
 
-// //////////////////////////////////////// これも違うと言われる。
-// User.find({})
-//   .then(result => {
-//     console.log(result.findUser());
-//   });
+// ////////////////////////////////////////////
+// // クラスメソッドを試す
+// User.findUsers(319, (error, result) => {
+//   if (!error) {
+//     console.log(result);
+//   }
+// });
+
+User.findUsers({ zip_code: 319 }, (error, result) => {
+  if (!error) {
+    console.log(result);
+  }
+});
 
 /////////////////////////////////////////////
 // リレーション（工事中）

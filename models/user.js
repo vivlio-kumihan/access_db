@@ -22,16 +22,32 @@ const userSchema = mongoose.Schema({
 });
 
 // Define Instance Methods
-// getInfo
+// getInfo <-- instance method
 userSchema.methods.getInfo = function() {
   return `Name: ${ this.name } Email: ${ this.email } Zip Code: ${ this.zip_code}`;
 };
-// findUsers
-userSchema.methods.findUsers = function() {
-  return this.model("users")
-  .find({ zip_code: this.zip_code })
-  .exec();
+  
+// // findUsers #1 <-- class method
+// userSchema.statics.findUsers = function(zip_code, cb) {
+  //   this.model("User")
+  //   .find({ zip_code: zip_code }, cb);
+  // };
+  
+// // findUsers #2 <-- class method
+// 定義側のメソッドに変数『query』としとくと、
+// 実行側のメソッドでよしなに処理できるのが便利なので、
+// こういうハンドリングを身につけるが吉。
+userSchema.statics.findUsers = function (query, cb) {
+  this.model("User")
+  .find(query, cb);
 };
+
+// // 動かなかった教科書のコード
+// userSchema.methods.findUsers = function() {
+//     return this.model("User")
+//     .find({ zip_code: this.zip_code })
+//     .exec();
+//   };
 
 // DBにcollectionがなければ、ここで命名したものが、
 // Caps無し、複数形で生成される。
