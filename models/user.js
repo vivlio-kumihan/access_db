@@ -21,10 +21,12 @@ const userSchema = mongoose.Schema({
   }]
 });
 
+// Define Instance Methods
+// getInfo
 userSchema.methods.getInfo = function() {
   return `Name: ${ this.name } Email: ${ this.email } Zip Code: ${ this.zip_code}`;
 };
-
+// findUsers
 userSchema.methods.findUsers = function() {
   return this.model("users")
   .find({ zip_code: this.zip_code })

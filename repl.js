@@ -12,25 +12,25 @@ mongoose.connect(
 mongoose.Promise = global.Promise;
 
 /////////////////////////////////////////////
-// モデルで定義した関数を試す
+// モデルで定義したインスタンスメソッドを試す
+
 // User.findOne({ email: "mari@email.com" })
 //   .then(result => {
 //     console.log(result.getInfo());
 //   });
 
-// //////////////////////////////////////// なぜそうなるのか　解決できない！
+// //////////////////////////////////////// ERRORが解決できない！
 // User.findUser();
 // => Uncaught TypeError: User.findUser is not a function
 
+// //////////////////////////////////////// これも違うと言われる。
 // User.find({})
 //   .then(result => {
 //     console.log(result.findUser());
 //   });
 
-
-
 /////////////////////////////////////////////
-// リレーション
+// リレーション（工事中）
 // var tmpCourse, tmpUser;
 
 // Course.create({
@@ -44,9 +44,6 @@ mongoose.Promise = global.Promise;
 // User.findOne({}).then(user => tmpUser = user);
 
 // testUser.courses.push(testCourse);
-
-
-
 
 /////////////////////////////////////////////
 // ここから命令
@@ -79,41 +76,41 @@ mongoose.Promise = global.Promise;
 //   .catch(error => console.log(error));
 
 // // ドキュメント生成メソッド
-User.create(
-  {
-    name: "mair",
-    email: "mari@email.com",
-    zip_code: 319
-  },
-  {
-    name: "kaz",
-    email: "kaz@email.com",
-    zip_code: 319
-  },
-  {
-    name: "nob",
-    email: "nob@email.com",
-    zip_code: 319
-  },
-  {
-    name: "高広　茉李",
-    email: "mari@j-email.com",
-    zip_code: 331
-  },
-  {
-    name: "高広　信之",
-    email: "nob@j-email.com",
-    zip_code: 331
-  },
-  {
-    name: "高広　和恵",
-    email: "kaz-t@j-email.com",
-    zip_code: 331
-  },
-  {
-    name: "吉田　和恵",
-    email: "kaz-y@j-email.com",
-    zip_code: 626
-  })
-  .then(ins => console.log(ins))
-  .catch(error => console.log(error));
+// User.create(
+//   {
+//     name: "mair",
+//     email: "mari@email.com",
+//     zip_code: 319
+//   },
+//   {
+//     name: "kaz",
+//     email: "kaz@email.com",
+//     zip_code: 319
+//   },
+//   {
+//     name: "nob",
+//     email: "nob@email.com",
+//     zip_code: 319
+//   },
+//   {
+//     name: "高広　茉李",
+//     email: "mari@j-email.com",
+//     zip_code: 331
+//   },
+//   {
+//     name: "高広　信之",
+//     email: "nob@j-email.com",
+//     zip_code: 331
+//   },
+//   {
+//     name: "高広　和恵",
+//     email: "kaz-t@j-email.com",
+//     zip_code: 331
+//   },
+//   {
+//     name: "吉田　和恵",
+//     email: "kaz-y@j-email.com",
+//     zip_code: 626
+//   })
+//   .then(ins => console.log(ins))
+//   .catch(error => console.log(error));
